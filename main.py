@@ -16,7 +16,7 @@ for ip in host_list:
     net_connect = ConnectHandler(
         device_type="cisco_ios",
         host=ip,
-        username="saul-adm",
+        username=input("Enter your Username: "),
         password=password,
     )
     output_file_name = str(ip) + ".txt"
