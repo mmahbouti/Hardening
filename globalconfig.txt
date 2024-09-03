@@ -1,0 +1,29 @@
+service tcp-keepalives-in
+service tcp-keepalives-out
+no service pad
+no mop enabled
+exception crashinfo maximum files 2
+
+ip ssh time-out 60
+ip ssh authentication-retries 3
+ip ssh version 2
+
+ip access-list extended SSH-ACL
+ permit tcp 10.3.4.38 0.0.0.0 any eq 22
+ permit tcp 10.3.0.130 0.0.0.0 any eq 22
+ permit tcp 10.3.4.14 0.0.0.0 any eq 22
+ permit tcp 10.3.0.131 0.0.0.0 any eq 22
+ permit tcp 10.3.4.82 0.0.0.0 any eq 22
+ permit tcp 10.3.4.29 0.0.0.0 any eq 22
+ permit tcp 10.3.0.136 0.0.0.0 any eq 22
+ permit tcp 10.3.10.115 0.0.0.0 any eq 22
+ permit tcp 10.3.0.128 0.0.0.63 any eq 22
+ permit tcp 10.3.9.35 0.0.0.0 any eq 22
+ permit tcp 10.64.14.0 0.0.0.255 any eq 22
+ permit tcp 10.65.14.0 0.0.0.255 any eq 22
+ permit tcp 10.3.14.0 0.0.0.255 any eq 22
+ permit tcp 10.1.14.0 0.0.0.255 any eq 22
+exit
+
+line vty 0 15
+ access-class SSH-ACL in 
